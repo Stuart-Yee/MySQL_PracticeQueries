@@ -1,0 +1,19 @@
+use dojos_and_ninjas_schema;
+INSERT INTO dojos (name) values ('Burbank');
+INSERT INTO dojos (name) values ('San Jose');
+INSERT INTO dojos (name) values ('Seattle');
+DELETE FROM dojos;
+INSERT INTO dojos (name) values ('Burbank');
+INSERT INTO dojos (name) values ('San Jose');
+INSERT INTO dojos (name) values ('Seattle');
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) 
+VALUES ('Stuart', 'Yee', 40, 7), ('Tabatha', 'Yee', 40, 7), ('Wyatt', 'Yee', 4, 7);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) 
+VALUES ('Bobbie', 'Joe', 32, 8), ('Aragorn', 'son of Arathorn', 80, 8), ('Jack', 'Sparrow', 40, 8);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) 
+VALUES ('Marty', 'McFly', 18, 9), ('Steve', 'Rogers', 100, 9), ('Sam', 'Gamgee', 44, 9);
+SELECT * FROM ninjas WHERE dojo_id = 7;
+SELECT * FROM ninjas WHERE dojo_id = 9;
+SELECT dojos.name, concat_ws(' ', ninjas.first_name, ninjas.last_name) as ninja FROM dojos
+JOIN ninjas on dojos.id = ninjas.dojo_id
+WHERE ninjas.id = 9;
